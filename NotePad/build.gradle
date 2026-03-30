@@ -1,18 +1,18 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 30
-    buildToolsVersion '30.0.3'
+    namespace "org.openintents.notepad"
+    compileSdk 36
 
     defaultConfig {
         applicationId "org.openintents.notepad"
-        minSdkVersion 14
-        targetSdkVersion 30
+        minSdk 14
+        targetSdk 36
         versionCode 10084
         versionName "1.5.4"
     }
 
-    lintOptions {
+    lint {
         checkReleaseBuilds false
         abortOnError false
     }
