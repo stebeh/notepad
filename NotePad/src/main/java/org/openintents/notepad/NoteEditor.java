@@ -1493,9 +1493,13 @@ public class NoteEditor extends AppCompatActivity implements ThemeDialogListener
         // Handle all of the possible menu actions.
         switch (item.getItemId()) {
             case android.R.id.home:
-                Intent intent = new Intent(this, NotesList.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(intent);
+                if (mState == STATE_EDIT_EXTERNAL_NOTE) {
+                    finish();
+                } else {
+                    Intent intent = new Intent(this, NotesList.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(intent);
+                }
                 break;
             case MENU_SEARCH:
                 menuSearch();
