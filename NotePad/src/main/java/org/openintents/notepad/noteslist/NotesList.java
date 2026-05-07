@@ -403,7 +403,11 @@ public class NotesList extends DistributionLibraryActivity implements
 
         IntentFilter filter = new IntentFilter();
         filter.addAction(CryptoIntents.ACTION_CRYPTO_LOGGED_OUT);
-        registerReceiver(mBroadcastReceiver, filter);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            registerReceiver(mBroadcastReceiver, filter, Context.RECEIVER_EXPORTED);
+        } else {
+            registerReceiver(mBroadcastReceiver, filter);
+        }
 
         // getListView().setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
     }
